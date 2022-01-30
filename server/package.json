@@ -1,0 +1,23 @@
+{
+  "name": "teebay",
+  "version": "1.0.0",
+  "description": "takehome assignment by sazim.io",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index",
+    "start": "nodemon index"
+  },
+  "keywords": [],
+  "author": "md nazmul hosain",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.6.2",
+    "graphql": "^16.2.0",
+    "graphql-tag": "^2.12.6",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
