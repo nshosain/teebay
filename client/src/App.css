@@ -9,3 +9,15 @@
   width: 400px;
   margin: auto;
 }
+
+.sold-text {
+  color: red;
+}
+
+.available-text {
+  color: teal;
+}
+
+.segment-css {
+  width: 700px;
+}

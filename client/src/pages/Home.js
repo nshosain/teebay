@@ -20,7 +20,7 @@ function Home() {
   //shows all products and post product form
   //else shows only all products
   return user ? (
-    //grid with post product feature and all products
+    //grid with post product form and all products
     <Grid width={12}>
       <Grid.Row className="page-title">
         <h1>Recent Products</h1>

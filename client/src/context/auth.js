@@ -66,7 +66,6 @@ function AuthProvider(props) {
   function logout() {
     //removes jwt token from local storage
     localStorage.removeItem("jwtToken");
-
     dispatch({ type: "LOGOUT" });
   }
 

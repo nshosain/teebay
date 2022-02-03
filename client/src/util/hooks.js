@@ -27,3 +27,5 @@ export const useForm = (callback, initialState = {}) => {
     values,
   };
 };
+
+export const navigate = () => {};

@@ -88,7 +88,7 @@ module.exports = {
 
         if (user.id === product_owner_id) {
           //if the product belongs to the creator, proceed to delete
-          await Product.delete();
+          await Product.findByIdAndDelete(product_id);
           return "Product Deleted Successfully";
         } else {
           throw new AuthenticationError("Action not allowed");

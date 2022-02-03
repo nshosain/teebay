@@ -67,6 +67,14 @@ function ProductForm() {
 
   //createProduct function that executes the graphql mutation CREATE_PRODUCT_MUTATION
   const [createProduct, { loading }] = useMutation(CREATE_PRODUCT_MUTATION, {
+    //if there are errors
+    onError(err) {
+      //teebay server returns only one error object,
+      //inside it contains the error, so need to access them this way
+      //and set them to the errors variable
+      console.log(err);
+      setErrors(err.graphQLErrors[0].extensions.errors);
+    },
     //values needed for mutation
     variables: values,
     // onError(error) {
@@ -79,10 +87,7 @@ function ProductForm() {
         query: FETCH_PRODUCTS_QUERY,
       });
 
-      //storing createProduct:return data into data
-      //data.getProducts = [result.data.createProduct, ...data.getProducts];
-      console.log(data.getProducts);
-      //persisting, rendering new data
+      //writing added prdouct data to the cache
       proxy.writeQuery({
         query: FETCH_PRODUCTS_QUERY,
         data: [result.data.createProduct, ...data.getProducts],
@@ -91,15 +96,9 @@ function ProductForm() {
       //resting input fields of the create product form
       resetFormValues();
     },
+    //persisting, rendering new data
     //fetching data from cache query results
     refetchQueries: (refetchProducts) => [{ query: FETCH_PRODUCTS_QUERY }],
-    //if there are errors
-    onError(err) {
-      //teebay server returns only one error object,
-      //inside it contains the error, so need to access them this way
-      //and set them to the errors variable
-      setErrors(err.graphQLErrors[0].extensions.errors);
-    },
   });
 
   //callback function, will be used in the hook

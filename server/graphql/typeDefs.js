@@ -3,7 +3,7 @@ const { gql } = require("apollo-server");
 module.exports = gql`
   # # # # # #    T Y P E S    # # # # # #
   type Product {
-    id: ID!
+    id: String!
     product_name: String!
     product_details: String!
     ownner_id: ID!
@@ -38,7 +38,7 @@ module.exports = gql`
   # # # # # #    Q U E R I E S    # # # # # #
   type Query {
     getProducts: [Product]
-    getProduct(product_id: ID!): Product
+    getProduct(product_id: String!): Product
     getUser(user_id: ID!): User
   }
   # # # # # #    M U T A T I O N S    # # # # # #
@@ -52,8 +52,12 @@ module.exports = gql`
       sell_price: String!
       rent_price: String!
     ): Product!
-    deleteProduct(product_id: ID!): String!
-    buyProduct(product_id: ID!): Product!
-    rentProduct(product_id: ID!, from_date: String, to_date: String): Product!
+    deleteProduct(product_id: String!): String!
+    buyProduct(product_id: String!): Product!
+    rentProduct(
+      product_id: String!
+      from_date: String
+      to_date: String
+    ): Product!
   }
 `;

@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth";
 import { useForm } from "../util/hooks";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+//configuring Toast
+toast.configure();
+
 const Login = () => {
   //using context
   const context = useContext(AuthContext);
@@ -33,11 +39,16 @@ const Login = () => {
     update(proxy, { data: { login: userData } }) {
       //uses login of context
       context.login(userData);
+
+      //welcome text
+      toast(`Welcome Back ${userData.last_name}!`);
       //takes back to homepage after registration is done.
       navigate("/");
     },
     //if there are errors
     onError(err) {
+      //wrong creds message
+      toast.error("Wrong Credentials!");
       //teebay server returns only one error object,
       //inside it contains the error, so need to access them this way
       //and set them to the errors variable
